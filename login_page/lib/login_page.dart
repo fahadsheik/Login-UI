@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_page/components/my_button.dart';
 import 'package:login_page/components/my_textfield.dart';
 import 'package:login_page/components/square_tile.dart';
+import 'package:login_page/registration_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -12,6 +13,13 @@ class LoginPage extends StatelessWidget {
 
   // sign user in method
   void signUserIn() {}
+
+  void navigateToRegistration(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RegistrationPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +88,7 @@ class LoginPage extends StatelessWidget {
               // sign in button
               MyButton(
                 onTap: signUserIn,
+                buttonText: 'Sign In', // Pass the text for the button
               ),
 
               const SizedBox(height: 50),
@@ -139,11 +148,16 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   const SizedBox(width: 4),
-                  const Text(
-                    'Register now',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      navigateToRegistration(context); // Navigate to RegistrationPage on tap
+                    },
+                    child: Text(
+                      'Register now',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
